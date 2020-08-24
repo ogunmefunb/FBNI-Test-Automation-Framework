@@ -1,4 +1,5 @@
 package FBNIGroup.LoginPage;
+import FBNIGroup.config.ConfigProperties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -6,11 +7,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.LoggerFactory;
 import xyz.ronella.logging.LoggerPlus;
 
+
 /**
  * Created by Dennis on 19/08/2020.
  */
 
 public class LoginPage {
+
+    ConfigProperties configProperties;
     private final static LoggerPlus LOGGER_PLUS = new LoggerPlus(LoggerFactory.getLogger(LoginPage.class));
     private WebDriver webDriver;
 
@@ -31,7 +35,8 @@ public class LoginPage {
         //wait for the element to be available
         WebDriverWait wait = new WebDriverWait(webDriver,10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(usernameField));
-        webDriver.findElement(usernameField).sendKeys();
+
+        webDriver.findElement(usernameField).sendKeys(configProperties.getUsername());
     }
 
     public void inputPassword()
@@ -41,7 +46,7 @@ public class LoginPage {
         //Wait for the element to be available
         WebDriverWait wait = new WebDriverWait(webDriver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(passwordField));
-        webDriver.findElement(passwordField).sendKeys();
+        webDriver.findElement(passwordField).sendKeys(configProperties.getPassword());
     }
     public void clickLoginButton()
     {
