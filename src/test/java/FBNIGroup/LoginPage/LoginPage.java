@@ -18,6 +18,7 @@ public class LoginPage {
     private final static LoggerPlus LOGGER_PLUS = new LoggerPlus(LoggerFactory.getLogger(LoginPage.class));
     private WebDriver webDriver;
 
+
     //Page Objects.
     private By usernameField = By.xpath("//input[@id='pt1:username::content']");
     private By passwordField = By.xpath("//input[@id='pt1:password::content']");
@@ -50,6 +51,8 @@ public class LoginPage {
     }
     public void clickLoginButton()
     {
+
+
         //Log the Process
         LOGGER_PLUS.info("Clicking the Login Button");
         //Wait for the element to be available

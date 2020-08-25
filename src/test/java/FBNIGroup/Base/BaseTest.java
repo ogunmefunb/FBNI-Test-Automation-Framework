@@ -19,10 +19,14 @@ public class BaseTest {
     public static ExtentTest scenarioDef;
     public static ExtentTest features;
     public  static String reportLocation="C:\\Users\\denni\\report";
+    protected AppLib appLib=new AppLib();
+    protected  String baseUrl;
+    protected String environment;
 
-    @BeforeClass
+   @BeforeClass
     public void SetUpApplication()
     {
+        baseUrl = appLib.getHomePageLink(environment);
         Reporter.log("---Browser Session started----", true);
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
