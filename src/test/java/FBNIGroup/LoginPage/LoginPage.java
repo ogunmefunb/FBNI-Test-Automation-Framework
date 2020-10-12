@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.LoggerFactory;
-import xyz.ronella.logging.LoggerPlus;
+//import xyz.ronella.logging.LoggerPlus;
 
 
 /**
@@ -15,7 +15,7 @@ import xyz.ronella.logging.LoggerPlus;
 public class LoginPage {
 
     ConfigProperties configProperties;
-    private final static LoggerPlus LOGGER_PLUS = new LoggerPlus(LoggerFactory.getLogger(LoginPage.class));
+//    private final static LoggerPlus LOGGER_PLUS = new LoggerPlus(LoggerFactory.getLogger(LoginPage.class));
     private WebDriver webDriver;
 
 
@@ -32,7 +32,7 @@ public class LoginPage {
     public void inputUsername()
     {
         //Log the Process
-        LOGGER_PLUS.info("Login with the following username");
+//        LOGGER_PLUS.info("Login with the following username");
         //wait for the element to be available
         WebDriverWait wait = new WebDriverWait(webDriver,10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(usernameField));
@@ -43,7 +43,7 @@ public class LoginPage {
     public void inputPassword()
     {
         //Log the process
-        LOGGER_PLUS.info("Login with the following Password");
+//        LOGGER_PLUS.info("Login with the following Password");
         //Wait for the element to be available
         WebDriverWait wait = new WebDriverWait(webDriver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(passwordField));
@@ -54,7 +54,7 @@ public class LoginPage {
 
 
         //Log the Process
-        LOGGER_PLUS.info("Clicking the Login Button");
+//        LOGGER_PLUS.info("Clicking the Login Button");
         //Wait for the element to be available
         WebDriverWait wait = new WebDriverWait(webDriver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(loginButton));

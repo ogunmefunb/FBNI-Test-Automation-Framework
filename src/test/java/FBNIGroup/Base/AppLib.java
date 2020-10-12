@@ -4,7 +4,7 @@ import FBNIGroup.LoginPage.LoginPage;
 import FBNIGroup.config.ConfigProperties;
 import org.slf4j.LoggerFactory;
 import org.testng.SkipException;
-import xyz.ronella.logging.LoggerPlus;
+//import xyz.ronella.logging.LoggerPlus;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -24,7 +24,7 @@ public class AppLib {
     private static ConfigProperties configProperties = new ConfigProperties();
 
     private String seleniumServer = "http://localhost:4444/wd/hub";
-    private final static LoggerPlus LOGGER_PLUS = new LoggerPlus(LoggerFactory.getLogger(LoginPage.class));
+//    private final static LoggerPlus LOGGER_PLUS = new LoggerPlus(LoggerFactory.getLogger(LoginPage.class));
 
     public String getSeleniumGrid(String seleniumGrid) {
         if (seleniumGrid.isEmpty()) {
@@ -48,7 +48,7 @@ public class AppLib {
     }
 
     private ArrayList<String> allowableEnvs() {
-        ArrayList<String> allowedEnvs = new ArrayList<String>();
+        ArrayList<String> allowedEnvs = new ArrayList<>();
         allowedEnvs.add(ENV_STAGING);
         allowedEnvs.add(ENV_PROD);
         allowedEnvs.add(ENV_PREPROD);
@@ -57,25 +57,25 @@ public class AppLib {
     }
 
     private ArrayList<String> prodEnvs() {
-        ArrayList<String> prodEnvs = new ArrayList<String>();
+        ArrayList<String> prodEnvs = new ArrayList<>();
         prodEnvs.add(ENV_PROD);
 
         return prodEnvs;
     }
 
     public void reportPreTestDetails(String env, String baseUrl) {
-        LOGGER_PLUS.info("Running tests for environment: [" + env + "] - Url: " + baseUrl);
+//        LOGGER_PLUS.info("Running tests for environment: [" + env + "] - Url: " + baseUrl);
     }
 
     public void displayMapValues(HashMap<String, String> map) {
         for (Map.Entry<String, String> entry : map.entrySet()) {
-            LOGGER_PLUS.info(entry.getKey() + " - " + entry.getValue());
+//            LOGGER_PLUS.info(entry.getKey() + " - " + entry.getValue());
         }
     }
 
     public static void sleep(int time) {
 
-        LOGGER_PLUS.info("Sleeping for [" + time + "] ms");
+//        LOGGER_PLUS.info("Sleeping for [" + time + "] ms");
         //WaitUtils.sleep(time);
     }
 
@@ -88,7 +88,7 @@ public class AppLib {
 
     public void checkEnvToSkipTest(String env) {
         if (prodEnvs().contains(env)) {
-            LOGGER_PLUS.info("Not running this test on the current environment [" + env + "]");
+//            LOGGER_PLUS.info("Not running this test on the current environment [" + env + "]");
             throw new SkipException("Not running this test on the current environment [" + env + "]");
         }
     }
