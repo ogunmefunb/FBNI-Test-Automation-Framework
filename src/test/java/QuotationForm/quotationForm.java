@@ -25,7 +25,7 @@ import org.testng.Assert;
 public class quotationForm extends AbstractPageMethods {
 	
 	WebDriver driver = getDriver();
-	Wait<WebDriver> w = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(45)).pollingEvery(Duration.ofSeconds(1));
+	Wait<WebDriver> w = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(60)).pollingEvery(Duration.ofSeconds(1));
 
 	
 	
@@ -172,9 +172,9 @@ public class quotationForm extends AbstractPageMethods {
 	else if(pickup6.get("Coinsurance Flag").contentEquals("YES")) {driver.findElement(coinsuranceCheckBox).click();} 
 	
        	
-//	Umbrella Duration Type
-      w.until(ExpectedConditions.visibilityOfElementLocated(umbrellaDurationTypeDropDown));
-     	new Select (driver.findElement(umbrellaDurationTypeDropDown)).selectByVisibleText(pickup6.get("Umbrella Duration Type"));	 
+//		Umbrella Duration Type
+		  w.until(ExpectedConditions.visibilityOfElementLocated(umbrellaDurationTypeDropDown));
+			new Select (driver.findElement(umbrellaDurationTypeDropDown)).selectByVisibleText(pickup6.get("Umbrella Duration Type"));
      	
 
 

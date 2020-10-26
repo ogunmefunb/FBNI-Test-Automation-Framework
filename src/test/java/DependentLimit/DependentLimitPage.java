@@ -21,7 +21,7 @@ import io.cucumber.java.en.When;
 public class DependentLimitPage extends AbstractPageMethods {
 	
 	WebDriver driver = getDriver();
-	Wait<WebDriver> w = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(2));
+	Wait<WebDriver> w = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(5));
 
 	
 	

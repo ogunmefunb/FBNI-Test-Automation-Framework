@@ -38,9 +38,9 @@ import io.cucumber.java.en.When;
 public class QuotationTransactionSpecification extends AbstractPageMethods {
 
 	WebDriver driver = getDriver();
+	QuotationTransactionSpecification productUnderTest = getProductUnderTest();
 	Wait<WebDriver> w = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(2)).ignoring(NoSuchElementException.class);
 	Actions actions = new Actions(driver);
-
 
 
 	By productsLOV = By.id("lmsgroup:cb1");
@@ -79,6 +79,7 @@ public class QuotationTransactionSpecification extends AbstractPageMethods {
 	public void user_provides_quotation_details_as_specified_below(DataTable arg5) throws Throwable {
 		Map<String, String> pickup5 = arg5.asMap(String.class, String.class);
 		//	Product Name
+		String productUnderTest = pickup5.get("Product Name");
 		driver.findElement(productsLOV).click();
 		Thread.sleep(3000);
 		List<WebElement> productTableElement = driver.findElements(productTable);
@@ -99,9 +100,9 @@ public class QuotationTransactionSpecification extends AbstractPageMethods {
 				{actions.sendKeys(Keys.PAGE_DOWN).build().perform();}
 			
 			// Iterate Through the list
-			for (int pdct = 0; pdct <= productTableElement.size(); pdct++)	
+		for (int pdct = 0; pdct <= productTableElement.size(); pdct++)
 			{		String Prdct = productTableElement.get(pdct).getText();
-			if (Prdct.contains(pickup5.get("Product Name"))) 
+			if (Prdct.contains(productUnderTest))
 			{productTableElement.get(pdct).click();
 			driver.findElement(productLovOkayButton).click();
 			break;}
@@ -205,6 +206,7 @@ public class QuotationTransactionSpecification extends AbstractPageMethods {
 		driver.findElement(nextButton).click();
 
 	}
+
 
 
 

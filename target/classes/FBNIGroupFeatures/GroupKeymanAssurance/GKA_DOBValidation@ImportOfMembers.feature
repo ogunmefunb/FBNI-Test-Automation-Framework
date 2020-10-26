@@ -1,9 +1,9 @@
 #@CurrentTest
-Feature: Dependent Limit
+Feature: Quotation Date of Birth Validation
 
-  Scenario Outline: Add Dependent Limit
+  Scenario Outline: DOB Validation
     Given User is on http://172.28.162.17:6001/LMSGroup/
-    When User inputs valid username BOGUNMEFUN and password Teamtezza123#
+    When User inputs valid username BOGUNMEFUN and password Tezzateam123#
     Then user Click on The Quotation Module
     And User click on the Quotation Processing Sublink
     When System displays Select A Quotation Transaction Screen
@@ -18,7 +18,13 @@ Feature: Dependent Limit
     When system opens quotation basic details form
     Then user supplies details as specified below
       | Branch                                      | DEFAULT            |
+      | Mask ID                                     | DEFAULT            |
       | Agent/Broker                                | AKINWANDE          |
+      | Marketer                                    | AKINWUNMI STEVE    |
+      | Joint Marketer flag                         | Yes                |
+      | Select Joint Marketer                       |                100 |
+      | Earnings Prd Type                           | Monthly            |
+      | Coinsurance Flag                            | NO                 |
       | Currency                                    | NGN                |
       | Currency Fixed Rate                         | Yes                |
       | Exchange Rate if currency fixed rate is YES |                180 |
@@ -26,8 +32,13 @@ Feature: Dependent Limit
       | Quotation Covers                            | Self & Dependants  |
       | Duration Type                               | Annual             |
       | Facultative Type                            | Fac Inward         |
+      | Umbrella Duration Type                      | Semi Annual        |
       | Frequency Of Payment                        | Semi Annual        |
       | Unit Rate Option                            | Weighted Age       |
+      | Total Claims paid                           |                100 |
+      | Total Premium Paid                          |                101 |
+      | Investment Rider Allowed                    | No                 |
+      | Investment Term                             |                    |
     Then User clicks on next button
     When Quotation Cover Details Screen appears with the Main cover populated
     Then User clicks on next button
@@ -41,22 +52,18 @@ Feature: Dependent Limit
       | Description          | New Business Category |
       | Multiple of earnings |2  |
     And User clicks Save button
-    And User highlights the Categories description
-    When User Click on add button for dependent type
-    And User provides Dependant limit information as stated below:
-    |Cover Type|GROUP TERM COVER|
-    |Dependent Type|SELF|
-    |Main Cover/Rider|Rider (% of Yr Earnings)|
-    |% of Main/Yr SA|15|
-    And User Clicks Save
-    
-   
-   
-   
-   
+    And User clicks next button
+    And User Inputs Quotation Subdivision
+      |Short Desc|NQS|
+      |Description|New Quote Subdivision|
+      |Postal Address|12345|
+    And User clicks next button
+    When System Displays Quotation Members Page
+#    Given User is on Quotation Members grid
+#    When user imports date as 29-01-1900
+#    Then The system defaults the date to 29-Nov-1998
+#    Then System saved The entered date successfully
 
-    
-    Examples: 
+       Examples:
       | productList |
-      | CREDIT LIFE ASSURANCE |
-   
+      | GROUP KEYMAN ASSURANCE |

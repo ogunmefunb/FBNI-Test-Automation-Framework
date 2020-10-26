@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import QuotationTransactionPage.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -30,11 +31,10 @@ import io.cucumber.java.en.When;
 public class QuoteMembersPage extends AbstractPageMethods {
 	
 	WebDriver driver = getDriver();
-	Wait<WebDriver> w = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(2));
+//	QuotationTransactionSpecification productUnderTest = getProductUnderTest();
+	Wait<WebDriver> w = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(60)).pollingEvery(Duration.ofSeconds(2));
 
-		
-		
-		
+
 		//Page Objects.
     private By quoteMembersImportTemplateButton = By.id("lmsgroup:cb62");
     private By quoteMembersChooseFileFileLocation = By.id("lmsgroup:if1::content");
@@ -63,7 +63,7 @@ public class QuoteMembersPage extends AbstractPageMethods {
     private By membersBackToMemberPageButton = By.id("lmsgroup:cb81");
 
 
-    
+
 
     @Then("User Clicks Import Template")
     public void user_Clicks_Import_Template() {
@@ -102,7 +102,6 @@ public class QuoteMembersPage extends AbstractPageMethods {
        driver.findElement(quoteMemberBackToMemberButton).click();
     }
 
-  
 	
 	@When("System Displays Quotation Members Page")
 	public void system_Displays_Quotation_Members_Page() {
@@ -117,79 +116,131 @@ public class QuoteMembersPage extends AbstractPageMethods {
 	}
 	
 	@Then("User inputs member details as specified below:")
-	public void user_inputs_member_details_as_specified_below(DataTable arg15) {
-    	Map<String, String> pickup15 = arg15.asMap(String.class, String.class);
+	public void user_inputs_member_details_as_specified_below(DataTable arg15) throws InterruptedException {
+		Map<String, String> pickup15 = arg15.asMap(String.class, String.class);
 
 //    	Payroll or Mem No.
-    	w.until(ExpectedConditions.visibilityOfElementLocated(membersPayrollOrMemberNoTextBox));
-    	driver.findElement(membersPayrollOrMemberNoTextBox).sendKeys(pickup15.get("Payroll or Mem No"));
-    	
+		w.until(ExpectedConditions.visibilityOfElementLocated(membersPayrollOrMemberNoTextBox));
+		driver.findElement(membersPayrollOrMemberNoTextBox).sendKeys(pickup15.get("Payroll or Mem No"));
+
 //    	Surname
-    	w.until(ExpectedConditions.visibilityOfElementLocated(membersSurnameTextBox));
-    	driver.findElement(membersSurnameTextBox).sendKeys(pickup15.get("Surname"));
+		w.until(ExpectedConditions.visibilityOfElementLocated(membersSurnameTextBox));
+		driver.findElement(membersSurnameTextBox).sendKeys(pickup15.get("Surname"));
 
 //    	Other Names
-    	w.until(ExpectedConditions.visibilityOfElementLocated(membersOtherNamesTextBox));
-    	driver.findElement(membersOtherNamesTextBox).sendKeys(pickup15.get("Other Names"));
-
-//    	Date of Birth
-    	w.until(ExpectedConditions.visibilityOfElementLocated(membersDateOfBirth));
-    	driver.findElement(membersDateOfBirth).sendKeys(pickup15.get("Date of Birth"));
+		w.until(ExpectedConditions.visibilityOfElementLocated(membersOtherNamesTextBox));
+		driver.findElement(membersOtherNamesTextBox).sendKeys(pickup15.get("Other Names"));
 
 //    	Category pop up box
-    	w.until(ExpectedConditions.elementToBeClickable(membersCategoryPopUpButton));
-   	 driver.findElement(membersCategoryPopUpButton).click();
-   	 List<WebElement> CategoryTableElement =  driver.findElements(membersCategoryTable);
-       	for (int ctgry = 0; ctgry < CategoryTableElement.size(); ctgry++)	
-       	{	String everyctgry = CategoryTableElement.get(ctgry).getText();
-       	if (everyctgry.contains(pickup15.get("Category"))) 
-       	{	System.out.println(ctgry);
-       	CategoryTableElement.get(ctgry).click();
-        	 w.until(ExpectedConditions.elementToBeClickable(membersCategoryOkayButton));
-       	driver.findElement(membersCategoryOkayButton).click();
-       	break;}}
-              
+		w.until(ExpectedConditions.elementToBeClickable(membersCategoryPopUpButton));
+		driver.findElement(membersCategoryPopUpButton).click();
+		List<WebElement> CategoryTableElement = driver.findElements(membersCategoryTable);
+		for (int ctgry = 0; ctgry < CategoryTableElement.size(); ctgry++) {
+			String everyctgry = CategoryTableElement.get(ctgry).getText();
+			if (everyctgry.contains(pickup15.get("Category"))) {
+				System.out.println(ctgry);
+				CategoryTableElement.get(ctgry).click();
+				w.until(ExpectedConditions.elementToBeClickable(membersCategoryOkayButton));
+				driver.findElement(membersCategoryOkayButton).click();
+				break;
+			}
+		}
+
 //    	Occupation pop up box	
-       	w.until(ExpectedConditions.elementToBeClickable(membersOccupationPopUpButton));
-   	 driver.findElement(membersOccupationPopUpButton).click();
-   	 List<WebElement> occupationTableElement =  driver.findElements(membersOccupationTable);
-       	for (int occp = 0; occp < occupationTableElement.size(); occp++)	
-       	{	String everyoccp = occupationTableElement.get(occp).getText();
-       	if (everyoccp.contains(pickup15.get("Occupation"))) 
-       	{	System.out.println(occp);
-       	occupationTableElement.get(occp).click();
-        	 w.until(ExpectedConditions.elementToBeClickable(membersOccupationOkayButton));
-       	driver.findElement(membersOccupationOkayButton).click();
-       	break;}}
-    	
+		w.until(ExpectedConditions.elementToBeClickable(membersOccupationPopUpButton));
+		driver.findElement(membersOccupationPopUpButton).click();
+		List<WebElement> occupationTableElement = driver.findElements(membersOccupationTable);
+		for (int occp = 0; occp < occupationTableElement.size(); occp++) {
+			String everyoccp = occupationTableElement.get(occp).getText();
+			if (everyoccp.contains(pickup15.get("Occupation"))) {
+				System.out.println(occp);
+				occupationTableElement.get(occp).click();
+				w.until(ExpectedConditions.elementToBeClickable(membersOccupationOkayButton));
+				driver.findElement(membersOccupationOkayButton).click();
+				break;
+			}
+		}
+
 //    	Sex
-    	w.until(ExpectedConditions.visibilityOfElementLocated(membersSexDropDownButton));
- 		new Select (driver.findElement(membersSexDropDownButton)).selectByVisibleText(pickup15.get("Sex"));
-    	
+		w.until(ExpectedConditions.elementToBeClickable(membersSexDropDownButton));
+		new Select(driver.findElement(membersSexDropDownButton)).selectByVisibleText(pickup15.get("Sex"));
+
 //    	Monthly Earnings
-    	w.until(ExpectedConditions.visibilityOfElementLocated(membersMonthlyEarningsTextBox));
-    	driver.findElement(membersMonthlyEarningsTextBox).sendKeys(pickup15.get("Monthly Earnings"));
+		w.until(ExpectedConditions.visibilityOfElementLocated(membersMonthlyEarningsTextBox));
+		driver.findElement(membersMonthlyEarningsTextBox).sendKeys(pickup15.get("Monthly Earnings"));
 
 //    	Monthly Earn Periods
-    	w.until(ExpectedConditions.visibilityOfElementLocated(membersMonthlyEarnPeriodsTextBox));
-    	driver.findElement(membersMonthlyEarnPeriodsTextBox).sendKeys(pickup15.get("Monthly Earn Periods"));
+		w.until(ExpectedConditions.visibilityOfElementLocated(membersMonthlyEarnPeriodsTextBox));
+		driver.findElement(membersMonthlyEarnPeriodsTextBox).sendKeys(pickup15.get("Monthly Earn Periods"));
 
 //    	Joining Date
-    	w.until(ExpectedConditions.visibilityOfElementLocated(membersJoiningDateTextBox));
-    	driver.findElement(membersJoiningDateTextBox).sendKeys(pickup15.get("Joining Date"));    	 	
-    	
+		w.until(ExpectedConditions.visibilityOfElementLocated(membersJoiningDateTextBox));
+		driver.findElement(membersJoiningDateTextBox).sendKeys(pickup15.get("Joining Date"));
+		Thread.sleep(5000);
+
+//		try{
+//			w.until(ExpectedConditions.visibilityOfElementLocated(By.id("lmsgroup:id4::content")));
+//			driver.findElement(By.id("lmsgroup:id4::content")).sendKeys(pickup15.get("Loan Date"));
+//			w.until(ExpectedConditions.visibilityOfElementLocated(By.id("lmsgroup:it65::content")));
+//			driver.findElement(By.id("lmsgroup:it65::content")).sendKeys(pickup15.get("Loan Int"));
+//			w.until(ExpectedConditions.visibilityOfElementLocated(By.id("lmsgroup:it64::content")));
+//			driver.findElement(By.id("lmsgroup:it64::content")).sendKeys(pickup15.get("Original Repayment Period"));
+//		}	catch(org.openqa.selenium.remote.UnreachableBrowserException e)
+//			{
+//				w.until(ExpectedConditions.visibilityOfElementLocated(membersDateOfBirth));
+//				driver.findElement(membersDateOfBirth).sendKeys(pickup15.get("Date of Birth"));
+//			}
+//		if (driver.findElement(By.id("lmsgroup:id4::content")).isDisplayed()) {
+//			driver.findElement(By.id("lmsgroup:id4::content")).sendKeys(pickup15.get("Loan Date"));
+//		} else{}
+//		if (driver.findElement(By.id("lmsgroup:it65::content")).isDisplayed()){
+//			driver.findElement(By.id("lmsgroup:it65::content")).sendKeys(pickup15.get("Loan Int"));
+//		}
+//		if (driver.findElement(By.id("lmsgroup:it64::content")).isDisplayed()){
+//			driver.findElement(By.id("lmsgroup:it64::content")).sendKeys(pickup15.get("Original Repayment Period"));
+//		}
+
+		if (productUnderTest.equals("CREDIT LIFE ASSURANCE")){
+			driver.findElement(By.id("lmsgroup:id4::content")).sendKeys(pickup15.get("Loan Date"));
+			driver.findElement(By.id("lmsgroup:it64::content")).sendKeys(pickup15.get("Original Repayment Period"));
+			driver.findElement(By.id("lmsgroup:it65::content")).sendKeys(pickup15.get("Loan Int"));
+
+		}
+
+
+
+		//    	Date of Birth
+		w.until(ExpectedConditions.visibilityOfElementLocated(membersDateOfBirth));
+		driver.findElement(membersDateOfBirth).sendKeys(pickup15.get("Date of Birth"));
+
 	}
-	
 	@Then("user clicks Save Member button")
 	public void user_clicks_Save_Member_button() {
     	w.until(ExpectedConditions.elementToBeClickable(membersSaveMemberButton));
 	   driver.findElement(membersSaveMemberButton).click();
 	}
 
+
+	@Then("System throws error: The date is not in the correct format.")
+	public void system_throws_error_The_date_is_not_in_the_correct_format() throws InterruptedException {
+		Thread.sleep(2000);
+    	Assert.assertTrue(driver.findElement(By.cssSelector(".AFNoteWindowHintText > div")).isDisplayed());
+	}
+
+	@Then("User inputs date of birth in the right format as stated below:")
+	public void user_inputs_date_of_birth_in_the_right_format_as_stated_below(DataTable arg16) {
+		Map<String, String> pickup16 = arg16.asMap(String.class, String.class);
+
+//		Date of Birth
+		w.until(ExpectedConditions.visibilityOfElementLocated(membersDateOfBirth));
+		driver.findElement(membersDateOfBirth).clear();
+		driver.findElement(membersDateOfBirth).sendKeys(pickup16.get("Date of Birth"));
+	}
+
 	@When("System displays success notification")
 	public void system_displays_success_notification() {
     	w.until(ExpectedConditions.elementToBeClickable(membersSavedMemberOkBotton));
-	    Assert.assertTrue(driver.findElement(membersSavedMemberOkBotton).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath("//div[@class=\'x15j\']")).getText().contains("Member Added"));
 	}
 
 	@Then("User clicks Ok to confirm member addition")
