@@ -38,7 +38,7 @@ import io.cucumber.java.en.When;
 public class QuotationTransactionSpecification extends AbstractPageMethods {
 
 	WebDriver driver = getDriver();
-	QuotationTransactionSpecification productUnderTest = getProductUnderTest();
+//	QuotationTransactionSpecification productUnderTest = getProductUnderTest();
 	Wait<WebDriver> w = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(2)).ignoring(NoSuchElementException.class);
 	Actions actions = new Actions(driver);
 
@@ -54,7 +54,7 @@ public class QuotationTransactionSpecification extends AbstractPageMethods {
 	By clientLovOkayButton = By.id("lmsgroup:cb10");
 	By accessGroupLOV = By.id("lmsgroup:cb12");
 	By accessGroupLovTable = By.xpath("//*[@id=\"lmsgroup:t8::db\"]/table/tbody/tr/td[2]/span");
-	By accessGroupLovOkayButton = By.id("lmsgroup:j_id__ctru214");
+	By accessGroupLovOkayButton = By.id("lmsgroup:cb12ttttt");
 	By umbrellaCoverCheckBox = By.id("lmsgroup:sbc1::content");
 	By quotationNumberPopUpButton = By.id("lmsgroup:cb4");
 	By quotationRevisionNoPopUpButton = By.id("lmsgroup:j_id__ctru119");

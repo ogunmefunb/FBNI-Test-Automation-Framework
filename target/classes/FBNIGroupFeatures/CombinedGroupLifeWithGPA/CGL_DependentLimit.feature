@@ -55,4 +55,4 @@ Feature: Dependent Limit
 
     Examples: 
       | productList |
-      | GROUP TERM  |
+      |COMBINED GROUP LIFE WITH GPA|

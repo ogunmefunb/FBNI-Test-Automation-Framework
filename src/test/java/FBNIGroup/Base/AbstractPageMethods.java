@@ -27,14 +27,14 @@ public class AbstractPageMethods {
 	}
 
 	//Dependency Injection for Products type
-	protected static QuotationTransactionSpecification productUnderTest;
-	protected QuotationTransactionSpecification getProductUnderTest() {
-
-		if (productUnderTest == null) {
-			productUnderTest = new QuotationTransactionSpecification();
-		}
-		return productUnderTest;
-
-	}
+//	protected static QuotationTransactionSpecification productUnderTest;
+//	protected QuotationTransactionSpecification getProductUnderTest() {
+//
+//		if (productUnderTest == null) {
+//			productUnderTest = new QuotationTransactionSpecification();
+//		}
+//		return productUnderTest;
+//
+//	}
 
 }

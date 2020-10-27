@@ -53,11 +53,11 @@ Feature: Creation Of Quotation
       | Sum Assured              					| 2000000 |
       | Dependent Type           					|COUSIN|
       | Multiple Earnings Period 					| 1 |
-      | Load 					           					| Load Age |
+      | Load 					           			| Load Age |
       | Load Div Factor          					| 100 |
-      | Discount? 				         				|Discount|
+      | Discount? 				         			|Discount|
       | Discount Div Factor      					|100  |
-      | Premium Mask         							|DEFAULT|
+      | Premium Mask         						|DEFAULT|
       |Rate             					        |15|
       |Rate Div Factor          					|100|
 

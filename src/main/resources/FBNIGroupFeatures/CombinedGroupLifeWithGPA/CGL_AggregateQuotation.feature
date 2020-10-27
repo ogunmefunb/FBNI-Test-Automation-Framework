@@ -3,7 +3,7 @@ Feature: Creation Of Quotation
 
   Scenario Outline: Aggregate Quotation
     Given User is on http://172.28.162.17:6001/LMSGroup/
-    When User inputs valid username BOGUNMEFUN and password Tezzateam123#
+    When User inputs valid username BOGUNMEFUN and password Blastom101*
     Then user Click on The Quotation Module
     And User click on the Quotation Processing Sublink
     When System displays Select A Quotation Transaction Screen
@@ -38,26 +38,26 @@ Feature: Creation Of Quotation
       | Total Claims paid         |                100 |
       | Total Premium Paid        |                101 |
       | Investment Rider Allowed  | No                 |
-      |Investment Term						|										 |
+      |Investment Term			  |				       |
     Then User clicks on next button
     When Quotation Cover Details Screen appears with the Main cover populated
     Then user Click on New button
     When System displays Cover Details form
     Then User provides details as specified below
-      | Cover Type               					|GROUP TERM COVER|
+      | Cover Type               					|GROUP LIFE BENEFIT|
       | No. of Members           					| 5 |
       | Av. Earnings Per Member  					|50000  |
       | Load Rate                					| 15 |
       | Average ANB              					| 100 |
       | Select Rate             					|Select Specific Mask|
-      | Sum Assured              					| 2000000 |
+      | Sum Assured              					| 10000000 |
       | Dependent Type           					|COUSIN|
       | Multiple Earnings Period 					| 1 |
-      | Load 					           					| Load Age |
+      | Load 					           			| None |
       | Load Div Factor          					| 100 |
-      | Discount? 				         				|Discount|
+      | Discount? 				         			|None|
       | Discount Div Factor      					|100  |
-      | Premium Mask         							|DEFAULT|
+      | Premium Mask         						|Group Life Prem Rates|
       |Rate             					        |15|
       |Rate Div Factor          					|100|
 

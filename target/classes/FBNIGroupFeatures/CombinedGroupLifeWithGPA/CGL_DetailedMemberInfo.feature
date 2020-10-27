@@ -96,4 +96,4 @@ Feature: Detailed Member Info
 
     Examples: 
       | productList |
-      | GROUP TERM  |
+      |COMBINED GROUP LIFE WITH GPA|

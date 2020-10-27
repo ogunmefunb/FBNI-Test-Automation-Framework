@@ -178,34 +178,13 @@ public class QuoteMembersPage extends AbstractPageMethods {
 		driver.findElement(membersJoiningDateTextBox).sendKeys(pickup15.get("Joining Date"));
 		Thread.sleep(5000);
 
-//		try{
-//			w.until(ExpectedConditions.visibilityOfElementLocated(By.id("lmsgroup:id4::content")));
+		// Credit Life Assurance Has Additional Mandatory fields on Quote Member Page
+//		if (productUnderTest.equals("CREDIT LIFE ASSURANCE")){
 //			driver.findElement(By.id("lmsgroup:id4::content")).sendKeys(pickup15.get("Loan Date"));
-//			w.until(ExpectedConditions.visibilityOfElementLocated(By.id("lmsgroup:it65::content")));
-//			driver.findElement(By.id("lmsgroup:it65::content")).sendKeys(pickup15.get("Loan Int"));
-//			w.until(ExpectedConditions.visibilityOfElementLocated(By.id("lmsgroup:it64::content")));
 //			driver.findElement(By.id("lmsgroup:it64::content")).sendKeys(pickup15.get("Original Repayment Period"));
-//		}	catch(org.openqa.selenium.remote.UnreachableBrowserException e)
-//			{
-//				w.until(ExpectedConditions.visibilityOfElementLocated(membersDateOfBirth));
-//				driver.findElement(membersDateOfBirth).sendKeys(pickup15.get("Date of Birth"));
-//			}
-//		if (driver.findElement(By.id("lmsgroup:id4::content")).isDisplayed()) {
-//			driver.findElement(By.id("lmsgroup:id4::content")).sendKeys(pickup15.get("Loan Date"));
-//		} else{}
-//		if (driver.findElement(By.id("lmsgroup:it65::content")).isDisplayed()){
 //			driver.findElement(By.id("lmsgroup:it65::content")).sendKeys(pickup15.get("Loan Int"));
+//
 //		}
-//		if (driver.findElement(By.id("lmsgroup:it64::content")).isDisplayed()){
-//			driver.findElement(By.id("lmsgroup:it64::content")).sendKeys(pickup15.get("Original Repayment Period"));
-//		}
-
-		if (productUnderTest.equals("CREDIT LIFE ASSURANCE")){
-			driver.findElement(By.id("lmsgroup:id4::content")).sendKeys(pickup15.get("Loan Date"));
-			driver.findElement(By.id("lmsgroup:it64::content")).sendKeys(pickup15.get("Original Repayment Period"));
-			driver.findElement(By.id("lmsgroup:it65::content")).sendKeys(pickup15.get("Loan Int"));
-
-		}
 
 
 
